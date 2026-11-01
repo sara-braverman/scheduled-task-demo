@@ -7,3 +7,7 @@ test("sums price times quantity", () => {
 test("returns 0 for an empty cart", () => {
   expect(calculateTotal([])).toBe(0);
 });
+
+test("treats a missing qty (e.g. gift card) as 1", () => {
+  expect(calculateTotal([{ price: 25 }, { price: 10, qty: 2 }])).toBe(45);
+});
