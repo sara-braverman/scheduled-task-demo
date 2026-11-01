@@ -7,3 +7,9 @@ test("sums price times quantity", () => {
 test("returns 0 for an empty cart", () => {
   expect(calculateTotal([])).toBe(0);
 });
+
+test("treats an item without qty (e.g. gift card) as quantity 1", () => {
+  const total = calculateTotal([{ price: 25 }, { price: 10, qty: 2 }]);
+  expect(total).toBe(45);
+  expect(Number.isNaN(total)).toBe(false);
+});
